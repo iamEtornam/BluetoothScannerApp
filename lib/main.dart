@@ -48,10 +48,15 @@ final FlutterBlue _flutterBlue = FlutterBlue.instance;
           Text('Tap to scan for Bluetooth devices',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Colors.white54),),
           SizedBox(height: 10,),
           Center(
-            child: CircleAvatar(
+            child: InkWell(
+              onTap:() async{
+
+              }
+              child: CircleAvatar(
               radius: 100,
               backgroundColor: Colors.white,
-              child: Icon(Icons.bluetooth),
+              child: Icon(Icons.bluetooth,size: 50,color:Colors.white),
+            )
             ),
           ),
           Spacer()
