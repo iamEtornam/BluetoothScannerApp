@@ -40,7 +40,9 @@ class _HomeViewState extends State<HomeView> {
         });
         AppSettings.openBluetoothSettings();
       } else {
-        _isOn = true;
+       setState(() {
+          _isOn = true;
+       });
       }
     });
     super.initState();
@@ -57,10 +59,11 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       backgroundColor: Colors.blue[900],
       appBar: AppBar(
+        centerTitle: false,
         elevation: 0,
         backgroundColor: Colors.blue[900],
         title: Text(
-          'Bluetooth scanner',
+          'B. scanner',
           style: TextStyle(
               color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold),
         ),
