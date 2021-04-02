@@ -16,11 +16,11 @@ A bluetooth scanner app
 ## Art
    
 <tr>
-    <td><img align="left" src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_1.png?raw=true" width="200" height="400"/></td>
-    <td><img src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_2.png?raw=true" width="200" height="400"/></td> 
+    <td><img align="left" src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_1.jpg" width="200" height="400"/></td>
+    <td><img src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_2.jpg" width="200" height="400"/></td> 
 </tr>
 <tr>
-    <td><img align="left" src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_3.png?raw=true" width="200" height="400"/></td>
+    <td><img align="left" src="https://github.com/RegNex/BluetoothScannerApp/blob/main/screenshots/art_3.jpg" width="200" height="400"/></td>
 </tr>
 <br>
 
