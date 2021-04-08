@@ -26,13 +26,14 @@ class HomeView extends StatefulWidget {
   _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends State<HomeView> with WidgetsBindingObserver {
   final FlutterBlue _flutterBlue = FlutterBlue.instance;
   bool _isOn = false;
   final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     _flutterBlue.state.listen((event) {
       if (event == BluetoothState.off) {
         setState(() {
@@ -40,9 +41,9 @@ class _HomeViewState extends State<HomeView> {
         });
         AppSettings.openBluetoothSettings();
       } else {
-       setState(() {
+        setState(() {
           _isOn = true;
-       });
+        });
       }
     });
     super.initState();
@@ -50,8 +51,23 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _flutterBlue.stopScan();
     super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('state = $state');
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached ||
+        state == AppLifecycleState.inactive) {
+      _flutterBlue.isScanning.listen((event) {
+        if (event) {
+          _flutterBlue.stopScan();
+        }
+      });
+    }
   }
 
   @override
@@ -132,8 +148,7 @@ class _HomeViewState extends State<HomeView> {
                     animate: false,
                     repeatPauseDuration: Duration(milliseconds: 100),
                     child: InkWell(
-                        onTap: () async => _flutterBlue.startScan(
-                            timeout: Duration(seconds: 60)),
+                        onTap: () async => _flutterBlue.startScan(),
                         child: CircleAvatar(
                           radius: 100,
                           backgroundColor: Colors.white,
